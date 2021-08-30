@@ -1,0 +1,97 @@
+AxesOff
+ZStandard
+84->Xmin
+0-72->Ymin
+ZInteger
+Line(0,0,0,0-10)
+Line(0,0,10,0)
+Line(0,0-10,10,0-10)
+Line(10,0,10,0-10)
+0->A
+0->C
+0-1->Y
+1->X
+Repeat A=23
+	getKey->A
+	If A=25
+	Then
+		If Y<0-1
+		Then
+			If C=1:Pxl-On(0-Y,X
+			If C=0:Pxl-Off(0-Y,X
+			Y+1->Y
+			pxl-Test(0-Y,X->C
+		End
+	End
+	If A=34
+	Then
+		If Y>0-9
+		Then
+			If C=1:Pxl-On(0-Y,X
+			If C=0:Pxl-Off(0-Y,X
+			Y-1->Y
+			pxl-Test(0-Y,X->C
+		End
+	End
+	If A=24
+	Then
+		If X>1
+		Then
+			If C=1:Pxl-On(0-Y,X
+			If C=0:Pxl-Off(0-Y,X
+			X-1->X
+			pxl-Test(0-Y,X->C
+		End
+	End
+	If A=26
+	Then
+		If X<9
+		Then
+			If C=1:Pxl-On(0-Y,X
+			If C=0:Pxl-Off(0-Y,X
+			X+1->X
+			pxl-Test(0-Y,X->C
+		End
+	End
+	If A=102
+	Then
+		If C=1
+		Then
+			0->C
+		Else
+			1->C
+		End
+	End
+	If A=45
+	Then
+		Text(57-12,0,"Clearing Screen"
+		0->C
+		For(I,1,9
+			For(J,1,9
+				Pxl-Off(I,J
+			End
+		End
+	End
+	If A=105
+	Then
+		Text(57-12,0,"Reading Screen"
+		16*{pxl-Test(1,1),pxl-Test(1,2),pxl-Test(1,3),pxl-Test(1,4),pxl-Test(1,5),pxl-Test(1,6),pxl-Test(1,7),pxl-Test(1,8),pxl-Test(2,1),pxl-Test(2,2),pxl-Test(2,3),pxl-Test(2,4),pxl-Test(2,5),pxl-Test(2,6),pxl-Test(2,7),pxl-Test(2,8),pxl-Test(3,1),pxl-Test(3,2),pxl-Test(3,3),pxl-Test(3,4),pxl-Test(3,5),pxl-Test(3,6),pxl-Test(3,7),pxl-Test(3,8),pxl-Test(4,1),pxl-Test(4,2),pxl-Test(4,3),pxl-Test(4,4),pxl-Test(4,5),pxl-Test(4,6),pxl-Test(4,7),pxl-Test(4,8),pxl-Test(5,1),pxl-Test(5,2),pxl-Test(5,3),pxl-Test(5,4),pxl-Test(5,5),pxl-Test(5,6),pxl-Test(5,7),pxl-Test(5,8),pxl-Test(6,1),pxl-Test(6,2),pxl-Test(6,3),pxl-Test(6,4),pxl-Test(6,5),pxl-Test(6,6),pxl-Test(6,7),pxl-Test(6,8),pxl-Test(7,1),pxl-Test(7,2),pxl-Test(7,3),pxl-Test(7,4),pxl-Test(7,5),pxl-Test(7,6),pxl-Test(7,7),pxl-Test(7,8),pxl-Test(8,1),pxl-Test(8,2),pxl-Test(8,3),pxl-Test(8,4),pxl-Test(8,5),pxl-Test(8,6),pxl-Test(8,7),pxl-Test(8,8)->L1
+		Text(57-12,0,"Running NN"
+		prgmNN
+		Text(57-12,0,"ArgMax"
+		0->P
+		0->M
+		For(I,1,10
+			If L1(I)>M
+			Then
+				L1(I)->M
+				I->P
+			End
+		End
+		P-1->P
+		Text(57-12,0,"Classification=",P
+		Text(57-18,0,"Score=",M
+	End
+	
+	Pxl-On(0-Y,X
+End
