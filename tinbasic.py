@@ -72,6 +72,59 @@ def needcast(fl: float, compat=True) -> str:
 
     return fl_str
 
+def nn_formula_write_archived(coef: np.ndarray, intercept: np.ndarray, lists: List[int]=[1,2,3], splitat=0) -> str:
+    neurons_weight, neurons_intercept = coef, intercept
+    lines = []
+    # lines.append(f"ClrAllLists")
+    lines.append(f"UnArchive L{lists[1]}")
+
+    line = "{"
+    for i in range(neurons_weight.shape[-1]):
+        for j in range(len(neurons_weight[:, i])):
+            weight_val = round(neurons_weight[j, i], 3)
+            if weight_val == 0:
+                continue
+            
+            # check if it's in bank 1
+            if j <= splitat:
+                line += f"L{lists[1]}({j+1})*{needcast(weight_val)}+"
+        if line[-1]=="+":
+            line = line[:-1]
+        bias_val = round(neurons_intercept[i], 3)
+        if bias_val != 0:
+            if line[-1] in [",", "{"]:
+                if bias_val < 0:
+                    line += "0,"
+            else:
+                line += f"{ '+' + str(bias_val) if bias_val > 0 else str(bias_val)},"
+        elif line[-1] in [",", "{"]:
+            line += "0,"
+
+    if line[-1]==",":
+        line = line[:-1]
+
+    lines.append(f"{line}->L{lists[0]}")
+    lines.append(f"ClrList L{lists[1]}")
+    lines.append(f"UnArchive L{lists[2]}")
+
+    for i in range(neurons_weight.shape[-1]):
+        line = ""
+        for j in range(len(neurons_weight[:, i])):
+            weight_val = round(neurons_weight[j, i], 3)
+            if weight_val == 0:
+                continue
+            
+            # check if it's in bank 2
+            if j > splitat:
+                line += f"L{lists[2]}({j-splitat})*{needcast(weight_val)}+"
+        if line == "": continue
+        if line[-1]=="+":
+            line = line[:-1]
+        line += f"+L{lists[0]}({i+1})->L{lists[0]}({i+1})"
+        lines.append(line)
+    lines.append(f"max(0,L{lists[0]}->L{lists[0]}")
+    return '\n'.join(lines)
+
 def nn_formula_simplify(coefs: List[np.ndarray], intercepts: List[np.ndarray], restrict_lists: int=1) -> str:
     lines = []
     
