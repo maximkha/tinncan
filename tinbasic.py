@@ -72,7 +72,7 @@ def needcast(fl: float, compat=True) -> str:
 
     return fl_str
 
-def nn_formula_write_archived(coef: np.ndarray, intercept: np.ndarray, lists: List[int]=[1,2,3], splitat=0) -> str:
+def nn_formula_write_archived(coef: np.ndarray, intercept: np.ndarray, lists: List[int]=[1,2,3], splitat=0, round_d=3) -> str:
     neurons_weight, neurons_intercept = coef, intercept
     lines = []
     # lines.append(f"ClrAllLists")
@@ -81,7 +81,7 @@ def nn_formula_write_archived(coef: np.ndarray, intercept: np.ndarray, lists: Li
     line = "{"
     for i in range(neurons_weight.shape[-1]):
         for j in range(len(neurons_weight[:, i])):
-            weight_val = round(neurons_weight[j, i], 3)
+            weight_val = round(neurons_weight[j, i], round_d)
             if weight_val == 0:
                 continue
             
@@ -90,7 +90,7 @@ def nn_formula_write_archived(coef: np.ndarray, intercept: np.ndarray, lists: Li
                 line += f"L{lists[1]}({j+1})*{needcast(weight_val)}+"
         if line[-1]=="+":
             line = line[:-1]
-        bias_val = round(neurons_intercept[i], 3)
+        bias_val = round(neurons_intercept[i], round_d)
         if bias_val != 0:
             if line[-1] in [",", "{"]:
                 if bias_val < 0:
@@ -99,6 +99,8 @@ def nn_formula_write_archived(coef: np.ndarray, intercept: np.ndarray, lists: Li
                 line += f"{ '+' + str(bias_val) if bias_val > 0 else str(bias_val)},"
         elif line[-1] in [",", "{"]:
             line += "0,"
+        else:
+            line += ","
 
     if line[-1]==",":
         line = line[:-1]
@@ -110,7 +112,7 @@ def nn_formula_write_archived(coef: np.ndarray, intercept: np.ndarray, lists: Li
     for i in range(neurons_weight.shape[-1]):
         line = ""
         for j in range(len(neurons_weight[:, i])):
-            weight_val = round(neurons_weight[j, i], 3)
+            weight_val = round(neurons_weight[j, i], round_d)
             if weight_val == 0:
                 continue
             
@@ -125,7 +127,7 @@ def nn_formula_write_archived(coef: np.ndarray, intercept: np.ndarray, lists: Li
     lines.append(f"max(0,L{lists[0]}->L{lists[0]}")
     return '\n'.join(lines)
 
-def nn_formula_simplify(coefs: List[np.ndarray], intercepts: List[np.ndarray], restrict_lists: int=1) -> str:
+def nn_formula_simplify(coefs: List[np.ndarray], intercepts: List[np.ndarray], restrict_lists: int=1, round_d=3) -> str:
     lines = []
     
     c_incs = [1]*coefs[0].shape[0]
@@ -135,7 +137,7 @@ def nn_formula_simplify(coefs: List[np.ndarray], intercepts: List[np.ndarray], r
         incs = []
         for i in range(neurons_weight.shape[-1]):
             for j in range(len(neurons_weight[:, i])):
-                weight_val = round(neurons_weight[j, i], 3)
+                weight_val = round(neurons_weight[j, i], round_d)
                 if weight_val == 0:
                     continue
                 
@@ -145,7 +147,7 @@ def nn_formula_simplify(coefs: List[np.ndarray], intercepts: List[np.ndarray], r
                 line += f"L{restrict_lists+0}({trimmed_indices[j]+1})*{needcast(weight_val)}+"
             if line[-1]=="+":
                 line = line[:-1]
-            bias_val = round(neurons_intercept[i], 3)
+            bias_val = round(neurons_intercept[i], round_d)
             if bias_val != 0:
                 if line[-1] in [",", "{"]:
                     if bias_val < 0:

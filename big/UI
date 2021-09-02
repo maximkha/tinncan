@@ -1,0 +1,101 @@
+AxesOff
+ZStandard
+84->Xmin
+0-72->Ymin
+ZInteger
+Line(0,0,0,0-30)
+Line(0,0,30,0)
+Line(0,0-30,30,0-30)
+Line(3,0,30,0-30)
+0->A
+0->C
+0-1->Y
+1->X
+Repeat A=23
+	getKey->A
+	If A=25
+	Then
+		If Y<0-1
+		Then
+			If C=1:Pxl-On(0-Y,X
+			If C=0:Pxl-Off(0-Y,X
+			Y+1->Y
+			pxl-Test(0-Y,X->C
+		End
+	End
+	If A=34
+	Then
+		If Y>0-29
+		Then
+			If C=1:Pxl-On(0-Y,X
+			If C=0:Pxl-Off(0-Y,X
+			Y-1->Y
+			pxl-Test(0-Y,X->C
+		End
+	End
+	If A=24
+	Then
+		If X>1
+		Then
+			If C=1:Pxl-On(0-Y,X
+			If C=0:Pxl-Off(0-Y,X
+			X-1->X
+			pxl-Test(0-Y,X->C
+		End
+	End
+	If A=26
+	Then
+		If X<29
+		Then
+			If C=1:Pxl-On(0-Y,X
+			If C=0:Pxl-Off(0-Y,X
+			X+1->X
+			pxl-Test(0-Y,X->C
+		End
+	End
+	If A=102
+	Then
+		If C=1
+		Then
+			0->C
+		Else
+			1->C
+		End
+	End
+	If A=45
+	Then
+		Text(57-12,0,"Clearing Screen"
+		0->C
+		For(I,1,29
+			For(J,1,29
+				Pxl-Off(I,J
+			End
+		End
+	End
+	If A=105
+	Then
+		Text(57-12,0,"Reading Screen"
+		{pxl-Test(1,1),pxl-Test(1,2),pxl-Test(1,3),pxl-Test(1,4),pxl-Test(1,5),pxl-Test(1,6),pxl-Test(1,7),pxl-Test(1,8),pxl-Test(1,9),pxl-Test(1,10),pxl-Test(1,11),pxl-Test(1,12),pxl-Test(1,13),pxl-Test(1,14),pxl-Test(1,15),pxl-Test(1,16),pxl-Test(1,17),pxl-Test(1,18),pxl-Test(1,19),pxl-Test(1,20),pxl-Test(1,21),pxl-Test(1,22),pxl-Test(1,23),pxl-Test(1,24),pxl-Test(1,25),pxl-Test(1,26),pxl-Test(1,27),pxl-Test(1,28),pxl-Test(2,1),pxl-Test(2,2),pxl-Test(2,3),pxl-Test(2,4),pxl-Test(2,5),pxl-Test(2,6),pxl-Test(2,7),pxl-Test(2,8),pxl-Test(2,9),pxl-Test(2,10),pxl-Test(2,11),pxl-Test(2,12),pxl-Test(2,13),pxl-Test(2,14),pxl-Test(2,15),pxl-Test(2,16),pxl-Test(2,17),pxl-Test(2,18),pxl-Test(2,19),pxl-Test(2,20),pxl-Test(2,21),pxl-Test(2,22),pxl-Test(2,23),pxl-Test(2,24),pxl-Test(2,25),pxl-Test(2,26),pxl-Test(2,27),pxl-Test(2,28),pxl-Test(3,1),pxl-Test(3,2),pxl-Test(3,3),pxl-Test(3,4),pxl-Test(3,5),pxl-Test(3,6),pxl-Test(3,7),pxl-Test(3,8),pxl-Test(3,9),pxl-Test(3,10),pxl-Test(3,11),pxl-Test(3,12),pxl-Test(3,13),pxl-Test(3,14),pxl-Test(3,15),pxl-Test(3,16),pxl-Test(3,17),pxl-Test(3,18),pxl-Test(3,19),pxl-Test(3,20),pxl-Test(3,21),pxl-Test(3,22),pxl-Test(3,23),pxl-Test(3,24),pxl-Test(3,25),pxl-Test(3,26),pxl-Test(3,27),pxl-Test(3,28),pxl-Test(4,1),pxl-Test(4,2),pxl-Test(4,3),pxl-Test(4,4),pxl-Test(4,5),pxl-Test(4,6),pxl-Test(4,7),pxl-Test(4,8),pxl-Test(4,9),pxl-Test(4,10),pxl-Test(4,11),pxl-Test(4,12),pxl-Test(4,13),pxl-Test(4,14),pxl-Test(4,15),pxl-Test(4,16),pxl-Test(4,17),pxl-Test(4,18),pxl-Test(4,19),pxl-Test(4,20),pxl-Test(4,21),pxl-Test(4,22),pxl-Test(4,23),pxl-Test(4,24),pxl-Test(4,25),pxl-Test(4,26),pxl-Test(4,27),pxl-Test(4,28),pxl-Test(5,1),pxl-Test(5,2),pxl-Test(5,3),pxl-Test(5,4),pxl-Test(5,5),pxl-Test(5,6),pxl-Test(5,7),pxl-Test(5,8),pxl-Test(5,9),pxl-Test(5,10),pxl-Test(5,11),pxl-Test(5,12),pxl-Test(5,13),pxl-Test(5,14),pxl-Test(5,15),pxl-Test(5,16),pxl-Test(5,17),pxl-Test(5,18),pxl-Test(5,19),pxl-Test(5,20),pxl-Test(5,21),pxl-Test(5,22),pxl-Test(5,23),pxl-Test(5,24),pxl-Test(5,25),pxl-Test(5,26),pxl-Test(5,27),pxl-Test(5,28),pxl-Test(6,1),pxl-Test(6,2),pxl-Test(6,3),pxl-Test(6,4),pxl-Test(6,5),pxl-Test(6,6),pxl-Test(6,7),pxl-Test(6,8),pxl-Test(6,9),pxl-Test(6,10),pxl-Test(6,11),pxl-Test(6,12),pxl-Test(6,13),pxl-Test(6,14),pxl-Test(6,15),pxl-Test(6,16),pxl-Test(6,17),pxl-Test(6,18),pxl-Test(6,19),pxl-Test(6,20),pxl-Test(6,21),pxl-Test(6,22),pxl-Test(6,23),pxl-Test(6,24),pxl-Test(6,25),pxl-Test(6,26),pxl-Test(6,27),pxl-Test(6,28),pxl-Test(7,1),pxl-Test(7,2),pxl-Test(7,3),pxl-Test(7,4),pxl-Test(7,5),pxl-Test(7,6),pxl-Test(7,7),pxl-Test(7,8),pxl-Test(7,9),pxl-Test(7,10),pxl-Test(7,11),pxl-Test(7,12),pxl-Test(7,13),pxl-Test(7,14),pxl-Test(7,15),pxl-Test(7,16),pxl-Test(7,17),pxl-Test(7,18),pxl-Test(7,19),pxl-Test(7,20),pxl-Test(7,21),pxl-Test(7,22),pxl-Test(7,23),pxl-Test(7,24),pxl-Test(7,25),pxl-Test(7,26),pxl-Test(7,27),pxl-Test(7,28),pxl-Test(8,1),pxl-Test(8,2),pxl-Test(8,3),pxl-Test(8,4),pxl-Test(8,5),pxl-Test(8,6),pxl-Test(8,7),pxl-Test(8,8),pxl-Test(8,9),pxl-Test(8,10),pxl-Test(8,11),pxl-Test(8,12),pxl-Test(8,13),pxl-Test(8,14),pxl-Test(8,15),pxl-Test(8,16),pxl-Test(8,17),pxl-Test(8,18),pxl-Test(8,19),pxl-Test(8,20),pxl-Test(8,21),pxl-Test(8,22),pxl-Test(8,23),pxl-Test(8,24),pxl-Test(8,25),pxl-Test(8,26),pxl-Test(8,27),pxl-Test(8,28),pxl-Test(9,1),pxl-Test(9,2),pxl-Test(9,3),pxl-Test(9,4),pxl-Test(9,5),pxl-Test(9,6),pxl-Test(9,7),pxl-Test(9,8),pxl-Test(9,9),pxl-Test(9,10),pxl-Test(9,11),pxl-Test(9,12),pxl-Test(9,13),pxl-Test(9,14),pxl-Test(9,15),pxl-Test(9,16),pxl-Test(9,17),pxl-Test(9,18),pxl-Test(9,19),pxl-Test(9,20),pxl-Test(9,21),pxl-Test(9,22),pxl-Test(9,23),pxl-Test(9,24),pxl-Test(9,25),pxl-Test(9,26),pxl-Test(9,27),pxl-Test(9,28),pxl-Test(10,1),pxl-Test(10,2),pxl-Test(10,3),pxl-Test(10,4),pxl-Test(10,5),pxl-Test(10,6),pxl-Test(10,7),pxl-Test(10,8),pxl-Test(10,9),pxl-Test(10,10),pxl-Test(10,11),pxl-Test(10,12),pxl-Test(10,13),pxl-Test(10,14),pxl-Test(10,15),pxl-Test(10,16),pxl-Test(10,17),pxl-Test(10,18),pxl-Test(10,19),pxl-Test(10,20),pxl-Test(10,21),pxl-Test(10,22),pxl-Test(10,23),pxl-Test(10,24),pxl-Test(10,25),pxl-Test(10,26),pxl-Test(10,27),pxl-Test(10,28),pxl-Test(11,1),pxl-Test(11,2),pxl-Test(11,3),pxl-Test(11,4),pxl-Test(11,5),pxl-Test(11,6),pxl-Test(11,7),pxl-Test(11,8),pxl-Test(11,9),pxl-Test(11,10),pxl-Test(11,11),pxl-Test(11,12),pxl-Test(11,13),pxl-Test(11,14),pxl-Test(11,15),pxl-Test(11,16),pxl-Test(11,17),pxl-Test(11,18),pxl-Test(11,19),pxl-Test(11,20),pxl-Test(11,21),pxl-Test(11,22),pxl-Test(11,23),pxl-Test(11,24),pxl-Test(11,25),pxl-Test(11,26),pxl-Test(11,27),pxl-Test(11,28),pxl-Test(12,1),pxl-Test(12,2),pxl-Test(12,3),pxl-Test(12,4),pxl-Test(12,5),pxl-Test(12,6),pxl-Test(12,7),pxl-Test(12,8),pxl-Test(12,9),pxl-Test(12,10),pxl-Test(12,11),pxl-Test(12,12),pxl-Test(12,13),pxl-Test(12,14),pxl-Test(12,15),pxl-Test(12,16),pxl-Test(12,17),pxl-Test(12,18),pxl-Test(12,19),pxl-Test(12,20),pxl-Test(12,21),pxl-Test(12,22),pxl-Test(12,23),pxl-Test(12,24),pxl-Test(12,25),pxl-Test(12,26),pxl-Test(12,27),pxl-Test(12,28),pxl-Test(13,1),pxl-Test(13,2),pxl-Test(13,3),pxl-Test(13,4),pxl-Test(13,5),pxl-Test(13,6),pxl-Test(13,7),pxl-Test(13,8),pxl-Test(13,9),pxl-Test(13,10),pxl-Test(13,11),pxl-Test(13,12),pxl-Test(13,13),pxl-Test(13,14),pxl-Test(13,15),pxl-Test(13,16),pxl-Test(13,17),pxl-Test(13,18),pxl-Test(13,19),pxl-Test(13,20),pxl-Test(13,21),pxl-Test(13,22),pxl-Test(13,23),pxl-Test(13,24),pxl-Test(13,25),pxl-Test(13,26),pxl-Test(13,27),pxl-Test(13,28),pxl-Test(14,1),pxl-Test(14,2),pxl-Test(14,3),pxl-Test(14,4),pxl-Test(14,5),pxl-Test(14,6),pxl-Test(14,7),pxl-Test(14,8),pxl-Test(14,9),pxl-Test(14,10),pxl-Test(14,11),pxl-Test(14,12),pxl-Test(14,13),pxl-Test(14,14),pxl-Test(14,15),pxl-Test(14,16),pxl-Test(14,17),pxl-Test(14,18),pxl-Test(14,19),pxl-Test(14,20),pxl-Test(14,21),pxl-Test(14,22),pxl-Test(14,23),pxl-Test(14,24),pxl-Test(14,25),pxl-Test(14,26),pxl-Test(14,27),pxl-Test(14,28)->L1
+		Archive L1
+		{pxl-Test(15,1),pxl-Test(15,2),pxl-Test(15,3),pxl-Test(15,4),pxl-Test(15,5),pxl-Test(15,6),pxl-Test(15,7),pxl-Test(15,8),pxl-Test(15,9),pxl-Test(15,10),pxl-Test(15,11),pxl-Test(15,12),pxl-Test(15,13),pxl-Test(15,14),pxl-Test(15,15),pxl-Test(15,16),pxl-Test(15,17),pxl-Test(15,18),pxl-Test(15,19),pxl-Test(15,20),pxl-Test(15,21),pxl-Test(15,22),pxl-Test(15,23),pxl-Test(15,24),pxl-Test(15,25),pxl-Test(15,26),pxl-Test(15,27),pxl-Test(15,28),pxl-Test(16,1),pxl-Test(16,2),pxl-Test(16,3),pxl-Test(16,4),pxl-Test(16,5),pxl-Test(16,6),pxl-Test(16,7),pxl-Test(16,8),pxl-Test(16,9),pxl-Test(16,10),pxl-Test(16,11),pxl-Test(16,12),pxl-Test(16,13),pxl-Test(16,14),pxl-Test(16,15),pxl-Test(16,16),pxl-Test(16,17),pxl-Test(16,18),pxl-Test(16,19),pxl-Test(16,20),pxl-Test(16,21),pxl-Test(16,22),pxl-Test(16,23),pxl-Test(16,24),pxl-Test(16,25),pxl-Test(16,26),pxl-Test(16,27),pxl-Test(16,28),pxl-Test(17,1),pxl-Test(17,2),pxl-Test(17,3),pxl-Test(17,4),pxl-Test(17,5),pxl-Test(17,6),pxl-Test(17,7),pxl-Test(17,8),pxl-Test(17,9),pxl-Test(17,10),pxl-Test(17,11),pxl-Test(17,12),pxl-Test(17,13),pxl-Test(17,14),pxl-Test(17,15),pxl-Test(17,16),pxl-Test(17,17),pxl-Test(17,18),pxl-Test(17,19),pxl-Test(17,20),pxl-Test(17,21),pxl-Test(17,22),pxl-Test(17,23),pxl-Test(17,24),pxl-Test(17,25),pxl-Test(17,26),pxl-Test(17,27),pxl-Test(17,28),pxl-Test(18,1),pxl-Test(18,2),pxl-Test(18,3),pxl-Test(18,4),pxl-Test(18,5),pxl-Test(18,6),pxl-Test(18,7),pxl-Test(18,8),pxl-Test(18,9),pxl-Test(18,10),pxl-Test(18,11),pxl-Test(18,12),pxl-Test(18,13),pxl-Test(18,14),pxl-Test(18,15),pxl-Test(18,16),pxl-Test(18,17),pxl-Test(18,18),pxl-Test(18,19),pxl-Test(18,20),pxl-Test(18,21),pxl-Test(18,22),pxl-Test(18,23),pxl-Test(18,24),pxl-Test(18,25),pxl-Test(18,26),pxl-Test(18,27),pxl-Test(18,28),pxl-Test(19,1),pxl-Test(19,2),pxl-Test(19,3),pxl-Test(19,4),pxl-Test(19,5),pxl-Test(19,6),pxl-Test(19,7),pxl-Test(19,8),pxl-Test(19,9),pxl-Test(19,10),pxl-Test(19,11),pxl-Test(19,12),pxl-Test(19,13),pxl-Test(19,14),pxl-Test(19,15),pxl-Test(19,16),pxl-Test(19,17),pxl-Test(19,18),pxl-Test(19,19),pxl-Test(19,20),pxl-Test(19,21),pxl-Test(19,22),pxl-Test(19,23),pxl-Test(19,24),pxl-Test(19,25),pxl-Test(19,26),pxl-Test(19,27),pxl-Test(19,28),pxl-Test(20,1),pxl-Test(20,2),pxl-Test(20,3),pxl-Test(20,4),pxl-Test(20,5),pxl-Test(20,6),pxl-Test(20,7),pxl-Test(20,8),pxl-Test(20,9),pxl-Test(20,10),pxl-Test(20,11),pxl-Test(20,12),pxl-Test(20,13),pxl-Test(20,14),pxl-Test(20,15),pxl-Test(20,16),pxl-Test(20,17),pxl-Test(20,18),pxl-Test(20,19),pxl-Test(20,20),pxl-Test(20,21),pxl-Test(20,22),pxl-Test(20,23),pxl-Test(20,24),pxl-Test(20,25),pxl-Test(20,26),pxl-Test(20,27),pxl-Test(20,28),pxl-Test(21,1),pxl-Test(21,2),pxl-Test(21,3),pxl-Test(21,4),pxl-Test(21,5),pxl-Test(21,6),pxl-Test(21,7),pxl-Test(21,8),pxl-Test(21,9),pxl-Test(21,10),pxl-Test(21,11),pxl-Test(21,12),pxl-Test(21,13),pxl-Test(21,14),pxl-Test(21,15),pxl-Test(21,16),pxl-Test(21,17),pxl-Test(21,18),pxl-Test(21,19),pxl-Test(21,20),pxl-Test(21,21),pxl-Test(21,22),pxl-Test(21,23),pxl-Test(21,24),pxl-Test(21,25),pxl-Test(21,26),pxl-Test(21,27),pxl-Test(21,28),pxl-Test(22,1),pxl-Test(22,2),pxl-Test(22,3),pxl-Test(22,4),pxl-Test(22,5),pxl-Test(22,6),pxl-Test(22,7),pxl-Test(22,8),pxl-Test(22,9),pxl-Test(22,10),pxl-Test(22,11),pxl-Test(22,12),pxl-Test(22,13),pxl-Test(22,14),pxl-Test(22,15),pxl-Test(22,16),pxl-Test(22,17),pxl-Test(22,18),pxl-Test(22,19),pxl-Test(22,20),pxl-Test(22,21),pxl-Test(22,22),pxl-Test(22,23),pxl-Test(22,24),pxl-Test(22,25),pxl-Test(22,26),pxl-Test(22,27),pxl-Test(22,28),pxl-Test(23,1),pxl-Test(23,2),pxl-Test(23,3),pxl-Test(23,4),pxl-Test(23,5),pxl-Test(23,6),pxl-Test(23,7),pxl-Test(23,8),pxl-Test(23,9),pxl-Test(23,10),pxl-Test(23,11),pxl-Test(23,12),pxl-Test(23,13),pxl-Test(23,14),pxl-Test(23,15),pxl-Test(23,16),pxl-Test(23,17),pxl-Test(23,18),pxl-Test(23,19),pxl-Test(23,20),pxl-Test(23,21),pxl-Test(23,22),pxl-Test(23,23),pxl-Test(23,24),pxl-Test(23,25),pxl-Test(23,26),pxl-Test(23,27),pxl-Test(23,28),pxl-Test(24,1),pxl-Test(24,2),pxl-Test(24,3),pxl-Test(24,4),pxl-Test(24,5),pxl-Test(24,6),pxl-Test(24,7),pxl-Test(24,8),pxl-Test(24,9),pxl-Test(24,10),pxl-Test(24,11),pxl-Test(24,12),pxl-Test(24,13),pxl-Test(24,14),pxl-Test(24,15),pxl-Test(24,16),pxl-Test(24,17),pxl-Test(24,18),pxl-Test(24,19),pxl-Test(24,20),pxl-Test(24,21),pxl-Test(24,22),pxl-Test(24,23),pxl-Test(24,24),pxl-Test(24,25),pxl-Test(24,26),pxl-Test(24,27),pxl-Test(24,28),pxl-Test(25,1),pxl-Test(25,2),pxl-Test(25,3),pxl-Test(25,4),pxl-Test(25,5),pxl-Test(25,6),pxl-Test(25,7),pxl-Test(25,8),pxl-Test(25,9),pxl-Test(25,10),pxl-Test(25,11),pxl-Test(25,12),pxl-Test(25,13),pxl-Test(25,14),pxl-Test(25,15),pxl-Test(25,16),pxl-Test(25,17),pxl-Test(25,18),pxl-Test(25,19),pxl-Test(25,20),pxl-Test(25,21),pxl-Test(25,22),pxl-Test(25,23),pxl-Test(25,24),pxl-Test(25,25),pxl-Test(25,26),pxl-Test(25,27),pxl-Test(25,28),pxl-Test(26,1),pxl-Test(26,2),pxl-Test(26,3),pxl-Test(26,4),pxl-Test(26,5),pxl-Test(26,6),pxl-Test(26,7),pxl-Test(26,8),pxl-Test(26,9),pxl-Test(26,10),pxl-Test(26,11),pxl-Test(26,12),pxl-Test(26,13),pxl-Test(26,14),pxl-Test(26,15),pxl-Test(26,16),pxl-Test(26,17),pxl-Test(26,18),pxl-Test(26,19),pxl-Test(26,20),pxl-Test(26,21),pxl-Test(26,22),pxl-Test(26,23),pxl-Test(26,24),pxl-Test(26,25),pxl-Test(26,26),pxl-Test(26,27),pxl-Test(26,28),pxl-Test(27,1),pxl-Test(27,2),pxl-Test(27,3),pxl-Test(27,4),pxl-Test(27,5),pxl-Test(27,6),pxl-Test(27,7),pxl-Test(27,8),pxl-Test(27,9),pxl-Test(27,10),pxl-Test(27,11),pxl-Test(27,12),pxl-Test(27,13),pxl-Test(27,14),pxl-Test(27,15),pxl-Test(27,16),pxl-Test(27,17),pxl-Test(27,18),pxl-Test(27,19),pxl-Test(27,20),pxl-Test(27,21),pxl-Test(27,22),pxl-Test(27,23),pxl-Test(27,24),pxl-Test(27,25),pxl-Test(27,26),pxl-Test(27,27),pxl-Test(27,28),pxl-Test(28,1),pxl-Test(28,2),pxl-Test(28,3),pxl-Test(28,4),pxl-Test(28,5),pxl-Test(28,6),pxl-Test(28,7),pxl-Test(28,8),pxl-Test(28,9),pxl-Test(28,10),pxl-Test(28,11),pxl-Test(28,12),pxl-Test(28,13),pxl-Test(28,14),pxl-Test(28,15),pxl-Test(28,16),pxl-Test(28,17),pxl-Test(28,18),pxl-Test(28,19),pxl-Test(28,20),pxl-Test(28,21),pxl-Test(28,22),pxl-Test(28,23),pxl-Test(28,24),pxl-Test(28,25),pxl-Test(28,26),pxl-Test(28,27),pxl-Test(28,28)->L2
+		Archive L2
+
+		Text(57-12,0,"Running NN"
+		prgmNN
+		Text(57-12,0,"ArgMax"
+		0->P
+		0->M
+		For(I,1,20 //Should be larger
+			If L1(I)>M
+			Then
+				L1(I)->M
+				I->P
+			End
+		End
+		P-1->P
+		Text(57-12,0,"Classification=",P
+		Text(57-18,0,"Score=",M
+	End
+	
+	Pxl-On(0-Y,X
+End
