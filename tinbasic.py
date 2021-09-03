@@ -167,3 +167,31 @@ def nn_formula_simplify(coefs: List[np.ndarray], intercepts: List[np.ndarray], r
         lines.append(line)
 
     return '\n'.join(lines)
+
+def to_conv(conv_weights, conv_bias, input_size, kernel_stride=(1, 1), shift=(1, 1), round_d=3) -> str:
+    x_size, y_size, n_kern = conv_weights.shape
+
+    output = ""
+    output += "ClrList L1\n"
+    for conv_id in range(n_kern):
+        output += f"For(J,{shift[0]},{input_size[0]+shift[0]-1},{kernel_stride[0]}\n"
+        output += f"For(I,{shift[1]},{input_size[1]+shift[1]-1},{kernel_stride[1]}\n"
+        output += "max(0,"
+        for i in range(y_size):
+            for j in range(x_size):
+                weight = round(float(conv_weights[i, j, conv_id]), round_d)
+                if weight != 0:
+                    output += f"pxl-Test(I+{i},J+{j})*{needcast(weight)}+"
+        weight = round(float(conv_bias[conv_id]), round_d)
+        if output[-1] == "+":
+            if weight != 0 and weight > 0:
+                    output += str(weight)
+            elif weight != 0 and weight < 0:
+                output = output[:-1] + f"-{str(abs(weight))}"
+            else:
+                output = output[:-1]
+        else:
+            output += needcast(weight)
+        output += "->L1(1+dim(L1))\n"
+        output += "End\n"*2
+    return output

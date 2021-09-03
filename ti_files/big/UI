@@ -1,0 +1,188 @@
+AxesOff
+ZStandard
+84->Xmin
+0-72->Ymin
+ZInteger
+Line(0,0,0,0-30)
+Line(0,0,30,0)
+Line(0,0-30,30,0-30)
+Line(30,0,30,0-30)
+0->A
+0->C
+0-1->Y
+1->X
+Repeat A=23
+	getKey->A
+	If A=11
+	Then
+		Pxl-On(6,11
+		Pxl-On(6,12
+		Pxl-On(7,10
+		Pxl-On(7,11
+		Pxl-On(7,12
+		Pxl-On(7,22
+		Pxl-On(7,23
+		Pxl-On(8,9
+		Pxl-On(8,10
+		Pxl-On(8,11
+		Pxl-On(8,21
+		Pxl-On(8,22
+		Pxl-On(9,9
+		Pxl-On(9,10
+		Pxl-On(9,21
+		Pxl-On(9,22
+		Pxl-On(10,8
+		Pxl-On(10,9
+		Pxl-On(10,20
+		Pxl-On(10,21
+		Pxl-On(11,7
+		Pxl-On(11,8
+		Pxl-On(11,9
+		Pxl-On(11,20
+		Pxl-On(11,21
+		Pxl-On(12,7
+		Pxl-On(12,8
+		Pxl-On(12,9
+		Pxl-On(12,18
+		Pxl-On(12,19
+		Pxl-On(12,20
+		Pxl-On(13,7
+		Pxl-On(13,8
+		Pxl-On(13,9
+		Pxl-On(13,10
+		Pxl-On(13,11
+		Pxl-On(13,16
+		Pxl-On(13,17
+		Pxl-On(13,18
+		Pxl-On(13,19
+		Pxl-On(13,20
+		Pxl-On(14,8
+		Pxl-On(14,9
+		Pxl-On(14,10
+		Pxl-On(14,11
+		Pxl-On(14,12
+		Pxl-On(14,13
+		Pxl-On(14,14
+		Pxl-On(14,15
+		Pxl-On(14,16
+		Pxl-On(14,17
+		Pxl-On(14,18
+		Pxl-On(14,19
+		Pxl-On(15,10
+		Pxl-On(15,11
+		Pxl-On(15,12
+		Pxl-On(15,13
+		Pxl-On(15,14
+		Pxl-On(15,15
+		Pxl-On(15,17
+		Pxl-On(15,18
+		Pxl-On(15,19
+		Pxl-On(16,17
+		Pxl-On(16,18
+		Pxl-On(17,16
+		Pxl-On(17,17
+		Pxl-On(18,16
+		Pxl-On(18,17
+		Pxl-On(19,15
+		Pxl-On(19,16
+		Pxl-On(19,17
+		Pxl-On(20,15
+		Pxl-On(20,16
+		Pxl-On(21,15
+		Pxl-On(21,16
+		Pxl-On(22,14
+		Pxl-On(22,15
+		Pxl-On(22,16
+		Pxl-On(23,14
+		Pxl-On(23,15
+		Pxl-On(23,16
+		Pxl-On(23,18
+		Pxl-On(23,19
+		Pxl-On(24,14
+		Pxl-On(24,15
+		Pxl-On(24,16
+		Pxl-On(24,17
+		Pxl-On(24,18
+		Pxl-On(25,15
+		Pxl-On(25,16
+	End
+	If A=25
+	Then
+		If Y<0-1
+		Then
+			If C=1:Pxl-On(0-Y,X
+			If C=0:Pxl-Off(0-Y,X
+			Y+1->Y
+			pxl-Test(0-Y,X->C
+		End
+	End
+	If A=34
+	Then
+		If Y>0-29
+		Then
+			If C=1:Pxl-On(0-Y,X
+			If C=0:Pxl-Off(0-Y,X
+			Y-1->Y
+			pxl-Test(0-Y,X->C
+		End
+	End
+	If A=24
+	Then
+		If X>1
+		Then
+			If C=1:Pxl-On(0-Y,X
+			If C=0:Pxl-Off(0-Y,X
+			X-1->X
+			pxl-Test(0-Y,X->C
+		End
+	End
+	If A=26
+	Then
+		If X<29
+		Then
+			If C=1:Pxl-On(0-Y,X
+			If C=0:Pxl-Off(0-Y,X
+			X+1->X
+			pxl-Test(0-Y,X->C
+		End
+	End
+	If A=102
+	Then
+		If C=1
+		Then
+			0->C
+		Else
+			1->C
+		End
+	End
+	If A=45
+	Then
+		Text(57-12,0,"Clearing Screen"
+		0->C
+		For(I,1,29
+			For(J,1,29
+				Pxl-Off(I,J
+			End
+		End
+	End
+	If A=105
+	Then
+		Text(57-12,0,"Running NN"
+		prgmNN
+		Text(57-12,0,"ArgMax"
+		0->P
+		(0-9999)->M
+		For(I,1,10
+			If L1(I)>M
+			Then
+				L1(I)->M
+				I->P
+			End
+		End
+		P-1->P
+		Text(57-12,0,"Classification=",P
+		Text(57-18,0,"Score=",M
+	End
+	
+	Pxl-On(0-Y,X
+End

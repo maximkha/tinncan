@@ -17,5 +17,5 @@ for y in range(28//2, 28):
         # print(f"{x=},{y=}")
         res += f"pxl-Test({y+1},{x+1}),"
 res = f"{res[:-1]}->L2\n"
-res += "Archive L2\n"
+# res += "Archive L2\n"
 print(res)
